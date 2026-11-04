@@ -1,0 +1,452 @@
+{
+ "gemma3-12b/fp16": {
+  "bits": 16,
+  "capabilities": [
+   "completion",
+   "vision"
+  ],
+  "details": {
+   "families": [
+    "gemma3"
+   ],
+   "family": "gemma3",
+   "format": "gguf",
+   "parameter_size": "11.8B",
+   "parent_model": "code/model-promotion-review-20261008/bf16-repair/12b/model-bf16.gguf",
+   "quantization_level": "BF16",
+   "runner": "llamacpp"
+  },
+  "digest": "36949f7228f649e7e611b231b146f78aacd3dcca9d85f7c8755ec588a51c1b1b",
+  "model": "gemma3:12b-it-fp16",
+  "size_gb": 24.4,
+  "think": null
+ },
+ "gemma3-12b/q4_K_M": {
+  "bits": 4.85,
+  "capabilities": [
+   "completion",
+   "vision"
+  ],
+  "details": {
+   "families": [
+    "gemma3",
+    "clip"
+   ],
+   "family": "gemma3",
+   "format": "gguf",
+   "parameter_size": "11.8B",
+   "parent_model": "dhiltgen/gemma3:12b-it-q4_K_M-llamacpp",
+   "quantization_level": "Q4_K_M",
+   "runner": "llamacpp"
+  },
+  "digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+  "model": "gemma3:12b",
+  "size_gb": 8.16,
+  "think": null
+ },
+ "gemma3-12b/q8_0": {
+  "bits": 8.5,
+  "capabilities": [
+   "completion",
+   "vision"
+  ],
+  "details": {
+   "families": [
+    "gemma3",
+    "clip"
+   ],
+   "family": "gemma3",
+   "format": "gguf",
+   "parameter_size": "11.8B",
+   "parent_model": "dhiltgen/gemma3:12b-it-q8_0-llamacpp",
+   "quantization_level": "Q8_0",
+   "runner": "llamacpp"
+  },
+  "digest": "88c2e99b4a44ef8a4c855315927ae99f6ea77a06f4ec24ad2d08929f818f5f00",
+  "model": "gemma3:12b-it-q8_0",
+  "size_gb": 13.37,
+  "think": null
+ },
+ "gemma3-12b/qat": {
+  "bits": 4.5,
+  "capabilities": [
+   "completion",
+   "vision"
+  ],
+  "details": {
+   "families": [
+    "gemma3"
+   ],
+   "family": "gemma3",
+   "format": "gguf",
+   "parameter_size": "11.8B",
+   "parent_model": "dhiltgen/gemma3:12b-it-qat-llamacpp",
+   "quantization_level": "Q4_0",
+   "runner": "llamacpp"
+  },
+  "digest": "c615ec41b3853376a7bc8523feeb6925fe1bc1000610322fea102bf3fab7f266",
+  "model": "gemma3:12b-it-qat",
+  "size_gb": 8.93,
+  "think": null
+ },
+ "llama3.1-8b/fp16": {
+  "bits": 16,
+  "capabilities": [
+   "completion",
+   "tools"
+  ],
+  "details": {
+   "families": [
+    "llama"
+   ],
+   "family": "llama",
+   "format": "gguf",
+   "parameter_size": "8.0B",
+   "parent_model": "",
+   "quantization_level": "F16"
+  },
+  "digest": "4aacac4194543ff7f70dab3f2ebc169c132d5319bb36f7a7e99c4ff525ebcc09",
+  "model": "llama3.1:8b-instruct-fp16",
+  "size_gb": 16.07,
+  "think": null
+ },
+ "llama3.1-8b/q2_K": {
+  "bits": 3.35,
+  "capabilities": [
+   "completion",
+   "tools"
+  ],
+  "details": {
+   "families": [
+    "llama"
+   ],
+   "family": "llama",
+   "format": "gguf",
+   "parameter_size": "8.0B",
+   "parent_model": "",
+   "quantization_level": "Q2_K"
+  },
+  "digest": "44a139eeb344b2aee436e4abaeb11ff77a124b918e44f1d7900211e7308437b9",
+  "model": "llama3.1:8b-instruct-q2_K",
+  "size_gb": 3.18,
+  "think": null
+ },
+ "llama3.1-8b/q3_K_M": {
+  "bits": 3.91,
+  "capabilities": [
+   "completion",
+   "tools"
+  ],
+  "details": {
+   "families": [
+    "llama"
+   ],
+   "family": "llama",
+   "format": "gguf",
+   "parameter_size": "8.0B",
+   "parent_model": "",
+   "quantization_level": "Q3_K_M"
+  },
+  "digest": "4faa21fca5a2734f3ae8994bc9d12e6bf7d642bdcc35c45e65df5d12ca4bd90b",
+  "model": "llama3.1:8b-instruct-q3_K_M",
+  "size_gb": 4.02,
+  "think": null
+ },
+ "llama3.1-8b/q4_K_M": {
+  "bits": 4.85,
+  "capabilities": [
+   "completion",
+   "tools"
+  ],
+  "details": {
+   "families": [
+    "llama"
+   ],
+   "family": "llama",
+   "format": "gguf",
+   "parameter_size": "8.0B",
+   "parent_model": "",
+   "quantization_level": "Q4_K_M"
+  },
+  "digest": "46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+  "model": "llama3.1:8b",
+  "size_gb": 4.92,
+  "think": null
+ },
+ "llama3.1-8b/q5_K_M": {
+  "bits": 5.69,
+  "capabilities": [
+   "completion",
+   "tools"
+  ],
+  "details": {
+   "families": [
+    "llama"
+   ],
+   "family": "llama",
+   "format": "gguf",
+   "parameter_size": "8.0B",
+   "parent_model": "",
+   "quantization_level": "Q5_K_M"
+  },
+  "digest": "27fe1b0ab52c0027e30f4a007d2137b451af6021a53485959a961b0fe84ce2dc",
+  "model": "llama3.1:8b-instruct-q5_K_M",
+  "size_gb": 5.73,
+  "think": null
+ },
+ "llama3.1-8b/q6_K": {
+  "bits": 6.56,
+  "capabilities": [
+   "completion",
+   "tools"
+  ],
+  "details": {
+   "families": [
+    "llama"
+   ],
+   "family": "llama",
+   "format": "gguf",
+   "parameter_size": "8.0B",
+   "parent_model": "",
+   "quantization_level": "Q6_K"
+  },
+  "digest": "81e7664fda9c7717167a74fde1fd04b1b041ef809dd401157fd69b85d478ada8",
+  "model": "llama3.1:8b-instruct-q6_K",
+  "size_gb": 6.6,
+  "think": null
+ },
+ "llama3.1-8b/q8_0": {
+  "bits": 8.5,
+  "capabilities": [
+   "completion",
+   "tools"
+  ],
+  "details": {
+   "families": [
+    "llama"
+   ],
+   "family": "llama",
+   "format": "gguf",
+   "parameter_size": "8.0B",
+   "parent_model": "",
+   "quantization_level": "Q8_0"
+  },
+  "digest": "b158ded76fa05be6bce8a682099ce5df8c5571340a04cf63a2923464679db576",
+  "model": "llama3.1:8b-instruct-q8_0",
+  "size_gb": 8.54,
+  "think": null
+ },
+ "qwen2.5-7b/fp16": {
+  "bits": 16,
+  "capabilities": [
+   "completion",
+   "tools"
+  ],
+  "details": {
+   "families": [
+    "qwen2"
+   ],
+   "family": "qwen2",
+   "format": "gguf",
+   "parameter_size": "7.6B",
+   "parent_model": "/Users/ollama/.ollama/models/blobs/sha256-678e1e0883636c4234928f23fd208337f790456121124a1986cbf1b806baeadb",
+   "quantization_level": "F16"
+  },
+  "digest": "59805ce4a4046be2d8f63231a78daacd2e66f5dccf1a64d0d138ebeeb26ff16c",
+  "model": "qwen2.5:7b-instruct-fp16",
+  "size_gb": 15.24,
+  "think": null
+ },
+ "qwen2.5-7b/q2_K": {
+  "bits": 3.35,
+  "capabilities": [
+   "completion",
+   "tools"
+  ],
+  "details": {
+   "families": [
+    "qwen2"
+   ],
+   "family": "qwen2",
+   "format": "gguf",
+   "parameter_size": "7.6B",
+   "parent_model": "",
+   "quantization_level": "Q2_K"
+  },
+  "digest": "94ac6d14b93f62d39167ae1733b8e2303d8d90045c4d37598348a98ce4a7e29d",
+  "model": "qwen2.5:7b-instruct-q2_K",
+  "size_gb": 3.02,
+  "think": null
+ },
+ "qwen2.5-7b/q3_K_M": {
+  "bits": 3.91,
+  "capabilities": [
+   "completion",
+   "tools"
+  ],
+  "details": {
+   "families": [
+    "qwen2"
+   ],
+   "family": "qwen2",
+   "format": "gguf",
+   "parameter_size": "7.6B",
+   "parent_model": "",
+   "quantization_level": "Q3_K_M"
+  },
+  "digest": "29492a92834144e177cd02ec748b95976f7d0f4dcd0e5a1493ac828aa9ba40ef",
+  "model": "qwen2.5:7b-instruct-q3_K_M",
+  "size_gb": 3.81,
+  "think": null
+ },
+ "qwen2.5-7b/q4_K_M": {
+  "bits": 4.85,
+  "capabilities": [
+   "completion",
+   "tools"
+  ],
+  "details": {
+   "families": [
+    "qwen2"
+   ],
+   "family": "qwen2",
+   "format": "gguf",
+   "parameter_size": "7.6B",
+   "parent_model": "",
+   "quantization_level": "Q4_K_M"
+  },
+  "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+  "model": "qwen2.5:7b-instruct-q4_K_M",
+  "size_gb": 4.68,
+  "think": null
+ },
+ "qwen2.5-7b/q5_K_M": {
+  "bits": 5.69,
+  "capabilities": [
+   "completion",
+   "tools"
+  ],
+  "details": {
+   "families": [
+    "qwen2"
+   ],
+   "family": "qwen2",
+   "format": "gguf",
+   "parameter_size": "7.6B",
+   "parent_model": "",
+   "quantization_level": "Q5_K_M"
+  },
+  "digest": "a1040ddd2b499d1e4bbf451ec0e8720216e2585d985921a967a1d23d29a5e6ba",
+  "model": "qwen2.5:7b-instruct-q5_K_M",
+  "size_gb": 5.44,
+  "think": null
+ },
+ "qwen2.5-7b/q6_K": {
+  "bits": 6.56,
+  "capabilities": [
+   "completion",
+   "tools"
+  ],
+  "details": {
+   "families": [
+    "qwen2"
+   ],
+   "family": "qwen2",
+   "format": "gguf",
+   "parameter_size": "7.6B",
+   "parent_model": "",
+   "quantization_level": "Q6_K"
+  },
+  "digest": "a7e494737d583a8bad00ca5a42eb57af7c37d5ce2b179a427843f6fd67ec56ed",
+  "model": "qwen2.5:7b-instruct-q6_K",
+  "size_gb": 6.25,
+  "think": null
+ },
+ "qwen2.5-7b/q8_0": {
+  "bits": 8.5,
+  "capabilities": [
+   "completion",
+   "tools"
+  ],
+  "details": {
+   "families": [
+    "qwen2"
+   ],
+   "family": "qwen2",
+   "format": "gguf",
+   "parameter_size": "7.6B",
+   "parent_model": "",
+   "quantization_level": "Q8_0"
+  },
+  "digest": "2d9500c948416525a044cc51a47a1ef93deb045aebf2f61e8d6b3ac3a3cf2290",
+  "model": "qwen2.5:7b-instruct-q8_0",
+  "size_gb": 8.1,
+  "think": null
+ },
+ "qwen3-8b/fp16": {
+  "bits": 16,
+  "capabilities": [
+   "completion",
+   "tools",
+   "thinking"
+  ],
+  "details": {
+   "families": [
+    "qwen3"
+   ],
+   "family": "qwen3",
+   "format": "gguf",
+   "parameter_size": "8.2B",
+   "parent_model": "/Users/administrator/.ollama/models/blobs/sha256-8a571487237a265daf6eda5a266db146b79b6765bd81e6b284a0aa524578a521",
+   "quantization_level": "F16"
+  },
+  "digest": "0b358e6e9d8cb39eaa4aa6b78136d09b91acb4be08c01bb707367811caed69ae",
+  "model": "qwen3:8b-fp16",
+  "size_gb": 16.39,
+  "think": false
+ },
+ "qwen3-8b/q4_K_M": {
+  "bits": 4.85,
+  "capabilities": [
+   "completion",
+   "tools",
+   "thinking"
+  ],
+  "details": {
+   "families": [
+    "qwen3"
+   ],
+   "family": "qwen3",
+   "format": "gguf",
+   "parameter_size": "8.2B",
+   "parent_model": "",
+   "quantization_level": "Q4_K_M"
+  },
+  "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "model": "qwen3:8b",
+  "size_gb": 5.23,
+  "think": false
+ },
+ "qwen3-8b/q8_0": {
+  "bits": 8.5,
+  "capabilities": [
+   "completion",
+   "tools",
+   "thinking"
+  ],
+  "details": {
+   "families": [
+    "qwen3"
+   ],
+   "family": "qwen3",
+   "format": "gguf",
+   "parameter_size": "8.2B",
+   "parent_model": "",
+   "quantization_level": "Q8_0"
+  },
+  "digest": "e56358ca25dd14db6853a9f68a92d717aaa6f0a94250a72d1a0f3d86a9f30130",
+  "model": "qwen3:8b-q8_0",
+  "size_gb": 8.85,
+  "think": false
+ }
+}
