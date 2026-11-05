@@ -59,7 +59,8 @@ def fig_cliff(acc: pd.DataFrame, path: str):
         ax.minorticks_off()
         ax.set_xlabel("bits per weight")
         ax.set_title(title, fontsize=10)
-        ax.yaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1, decimals=0))
+        # extraction scores sit within a point of 100%, so whole-percent ticks would repeat
+        ax.yaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1, decimals=1 if task == "drift" else 0))
         ax.grid(alpha=0.25)
     h, lab = axes[0].get_legend_handles_labels()
     h2, lab2 = axes[2].get_legend_handles_labels()

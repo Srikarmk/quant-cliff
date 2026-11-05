@@ -116,7 +116,7 @@ def predictions(t: T) -> list[tuple[int, str, list[dict]]]:
     for f in LADDER:
         for task in ["gsm8k", "mmlu"]:
             a8, a4, a2 = (t.agree(f, task, lv) for lv in ["q8_0", "q4_K_M", "q2_K"])
-            parts.append(_part(f"{LABEL[f]} {A.TASK_LABEL[task]}: agreement q2_K < q4_K_M < q8_0",
+            parts.append(_part(f"{LABEL[f]} {A.TASK_LABEL[task]}: agreement falls q8_0 → q4_K_M → q2_K",
                                f"{_pc(a8)} → {_pc(a4)} → {_pc(a2)}", a2 < a4 < a8))
     P.append((7, "Answers move before accuracy does", parts))
 
