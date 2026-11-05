@@ -26,8 +26,8 @@ ladder (Llama 3.1 8B, Qwen2.5 7B) stay within 3 pp, with one exception: Llama on
 [−11.9, −0.6], which recovers to −1.2 at q5_K_M and is not a trend.
 
 **Ollama's default 4-bit costs one model a few points, and the others nothing.** At q4_K_M, Llama loses
-4.4 pp on GSM8K [−9.4, +0.6] and 3.8 on MMLU [−9.4, +1.9]; qwen3 8B, Qwen2.5 7B and Gemma 3 12B are
-within 2 pp on every task. In return q4_K_M is about a third of the size and generates 2.5–2.6× as fast
+4.4 pp on GSM8K [−9.4, +0.6] and 3.8 on MMLU [−9.4, +1.9]; qwen3 8B, Qwen2.5 7B and Gemma 3 12B
+lose at most 1.9 pp on any task. In return q4_K_M is about a third of the size and generates 2.5–2.6× as fast
 as fp16 on this laptop.
 
 **The cliff is at 2 bits, and how far a model falls depends on the model.** At q2_K, Llama's GSM8K
