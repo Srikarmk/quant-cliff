@@ -53,3 +53,11 @@ def test_written_answer_survives_a_truncated_reply():
     assert r["written_correct"] is True
     r = check_a("gsm8k", "json_cot", '{"reasoning": "6 + 12", "answer": 18}', "18")
     assert r["correct"] and r["written_correct"]
+
+
+def test_space_as_thousands_separator_on_the_answer_line():
+    from qcliff.parse import parse_gsm8k
+    assert parse_gsm8k("The difference is $409 500 - $400 000 = $9 500.\n\nAnswer: $9 500")[0] == "9500"
+    assert parse_gsm8k("Answer: 1 250 000")[0] == "1250000"
+    assert parse_gsm8k("so \\boxed{12 000}")[0] == "12000"
+    assert parse_gsm8k("Answer: 3 apples and 450 grams")[0] == "3"  # not a digit group

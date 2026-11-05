@@ -101,15 +101,23 @@ What would contradict prediction 4: a clear GSM8K drop at q4_K_M or above.
 The full run ended 2026-11-04 about 21:00 EST, about 25 hours after it started: 14,300 calls on the main
 items (21 builds × 620, plus the A/A repeat at q4_K_M), every build complete. Nothing above was edited.
 The pass rules were fixed in `src/qcliff/score.py` (commit 182b222) against the pilot before any main
-result existed; the only change since is the wording of one check's label in prediction 7, which printed
-the levels in the opposite order to its values. The scorecard is `reports/scorecard.md`.
+result existed. The only changes since are the wording of one check's label in prediction 7, which
+printed the levels in the opposite order to its values, and the parser fix described below. The scorecard is `reports/scorecard.md`.
 
 Checks before scoring: no call came near the context window (longest prompt plus reply 1,201 of 4,096
 tokens). Every unparsed GSM8K/MMLU reply (17), every wrong reply cut off at the cap (38), and every wrong
 reply whose last lines mention the right answer (76) was read. All are the model's own failures:
 intermediate values that equal the gold, loops to the cap, "none of the above", refusing to choose.
-None is a parsing artifact. Re-scoring all 9,870 main replies with an independent copy of the checkers
-(evalpair) gave the same score on every one.
+
+One parsing artifact was found after the first scoring, by a separate run of the same items: on
+gsm8k-0265 (gold 9,500), Llama writes "Answer: $9 500", with a space as the thousands separator, and the
+parser read 9. It did so at fp16, q8_0, q6_K, q5_K_M and q4_K_M (5 scored replies, plus the A/A repeat);
+no other main reply has a space-grouped number on its answer line. The parser now joins digit groups
+split by a space on the answer line and inside `\boxed{}` only, and every number below is after the fix.
+Before it, Llama's GSM8K scores from fp16 to q4_K_M were each 0.6 pp lower (fp16 88.1% rather than
+88.8%), its q3_K_M drop was −5.6 rather than −6.2 pp, and its q2_K drop −27.5 rather than −28.1. No
+verdict changed. Re-scoring all 9,870 main replies with an independent copy of the checkers (evalpair,
+with the same fix) gives the same score on every one.
 
 Scored: 8 held, 5 partly, 0 failed.
 
@@ -118,10 +126,10 @@ Scored: 8 held, 5 partly, 0 failed.
 | 1 | q8_0 drop within ±2 pp, interval includes 0, every model and task | largest Llama MMLU −1.9 [−5.0, +0.6] | held |
 | 2 | q6_K and q5_K_M drops within ±3 pp, ladder models | 11 of 12; Llama MMLU q6_K −6.2 [−11.9, −0.6] | partly |
 | 3 | q4_K_M drop no worse than −4 pp, every model and task | 11 of 12; Llama GSM8K −4.4 [−9.4, +0.6] | partly |
-| 4 | No clear GSM8K drop above q3_K_M; Llama q2_K ≥ 5 pp and worse than Qwen2.5 | none above q3_K_M; Llama −27.5 [−35.6, −20.0], Qwen2.5 −6.9 | held |
-| 5 | At q2_K, GSM8K drop larger than MMLU drop, both ladder models | Llama −27.5 vs −12.5; Qwen2.5 −6.9 vs −9.4 | partly |
+| 4 | No clear GSM8K drop above q3_K_M; Llama q2_K ≥ 5 pp and worse than Qwen2.5 | none above q3_K_M; Llama −28.1 [−35.6, −20.0], Qwen2.5 −6.9 | held |
+| 5 | At q2_K, GSM8K drop larger than MMLU drop, both ladder models | Llama −28.1 vs −12.5; Qwen2.5 −6.9 vs −9.4 | partly |
 | 6 | q2_K base extraction within ±2 pp; reformatted loses more | Llama +0.3 / −0.5; Qwen2.5 +0.1 / −0.6 | held |
-| 7 | q8_0 agreement < 100% for ≥ 3 models; agreement falls q8_0 → q4_K_M → q2_K | 4 of 4; e.g. Llama GSM8K 93.8% → 85.6% → 60.0% | held |
+| 7 | q8_0 agreement < 100% for ≥ 3 models; agreement falls q8_0 → q4_K_M → q2_K | 4 of 4; e.g. Llama GSM8K 93.8% → 85.6% → 60.6% | held |
 | 8 | Llama GSM8K output at q2_K ≥ 1.15 × fp16 | 223 → 306 tokens (1.37×) | held |
 | 9 | Llama strict-JSON share, q2_K vs fp16, differs by ≥ 50 pp | 0% → 100% | held |
 | 10 | Gemma QAT agrees with fp16 more than q4_K_M, pooled; drop no worse on either task | 94.1% vs 93.1%; MMLU −0.6 vs −1.9; GSM8K +0.6 vs +1.9 (missed) | partly |
@@ -140,8 +148,8 @@ with itself on 98.8% of Llama's and 99.4% of Qwen2.5's MMLU items (2 and 1 unpar
 Not pre-registered, from reading the replies:
 
 - **Llama's 2-bit maths loss is wrong reasoning, not running out of room.** At q2_K, 49 GSM8K items go
-  right → wrong and 5 wrong → right. Only 10 of the 49 are replies cut off at the cap. Among replies that
-  finished, accuracy is 66.9% (145 items), against 88.1% at fp16.
+  right → wrong and 4 wrong → right. Only 10 of the 49 are replies cut off at the cap. Among replies that
+  finished, accuracy is 66.9% (97 of 145), against 88.8% at fp16.
 - **Llama's MMLU answers move well before its accuracy settles.** The q6_K dip (−6.2 pp: 16 items right
   → wrong, 6 wrong → right) is followed by −1.2 at q5_K_M and −3.8 at q4_K_M, so it is not a trend. From
   q6_K to q4_K_M, Llama gives a different MMLU answer than fp16 on 15–17% of items; Qwen2.5 on 8%.
@@ -151,5 +159,5 @@ Not pre-registered, from reading the replies:
   absolute location." repeated to the cap; "Step 29: Based on the above steps..."), Qwen2.5 answers one
   MMLU item in Chinese and on another repeats "hinterland" until the cap.
 - **q2_K buys little speed.** At q2_K, Llama generates 62.5 tokens per second against 48.1 at q4_K_M
-  (1.3×) and Qwen2.5 62.2 against 52.6 (1.2×), for about 1.7 GB less memory, while scoring 23 and 9 pp
+  (1.3×) and Qwen2.5 62.2 against 52.6 (1.2×), for about 1.7 GB less memory, while scoring 24 and 9 pp
   lower on GSM8K than at q4_K_M.

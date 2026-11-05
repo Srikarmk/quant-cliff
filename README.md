@@ -14,7 +14,8 @@ with its own fp16. The predictions and the analysis plan were committed before t
 
 Scored against the committed predictions: 8 held, 5 partly, 0 failed
 ([addendum](HYPOTHESES.md#addendum-2026-11-04-2130-est-scoring-after-the-full-run),
-[scorecard](reports/scorecard.md), [all numbers](reports/results.md)). Drops are a level's score minus
+[scorecard](reports/scorecard.md), [all numbers](reports/results.md)). One parser fix made after the first
+scoring (a space used as a thousands separator, on one item) is disclosed there; it changed no verdict. Drops are a level's score minus
 fp16's on the same items; brackets are 95% item-bootstrap intervals.
 
 ![Score by quantization level](reports/figures/cliff.png)
@@ -30,9 +31,9 @@ within 2 pp on every task. In return q4_K_M is about a third of the size and gen
 as fp16 on this laptop.
 
 **The cliff is at 2 bits, and how far a model falls depends on the model.** At q2_K, Llama's GSM8K
-accuracy drops from 88.1% to 60.6% (−27.5 pp [−35.6, −20.0]) and its MMLU from 84.4% to 71.9%. Qwen2.5,
+accuracy drops from 88.8% to 60.6% (−28.1 pp [−35.6, −20.0]) and its MMLU from 84.4% to 71.9%. Qwen2.5,
 at the same nominal bit-width, loses 6.9 pp on maths and 9.4 on MMLU. Llama already slips at q3_K_M
-(−5.6 pp on GSM8K, −6.9 on MMLU); Qwen2.5 at q3_K_M is level with fp16. Llama's 2-bit loss is mostly
+(−6.2 pp on GSM8K, −6.9 on MMLU); Qwen2.5 at q3_K_M is level with fp16. Llama's 2-bit loss is mostly
 wrong reasoning, not running out of room: of the 49 items it gets wrong at q2_K and right at fp16, 10
 are replies cut off at the cap, and among replies that finished it is right on 66.9%. The cut-off ones
 loop ("The Equator is not used to determine absolute location." until the cap).
@@ -58,7 +59,7 @@ accuracy is within 1 pp of fp16 on every task. The ordinary q4_K_M is also withi
 tasks there was little for QAT to recover.
 
 **Below 4 bits, little speed is left to buy.** q2_K generates about 1.2–1.3× as fast as q4_K_M and saves
-about 1.7 GB, for 9–23 pp less on maths.
+about 1.7 GB, for 9–24 pp less on maths.
 
 **What to take from it.** For 7–12B instruct models on tasks like these, 5 bits and up is free and
 q4_K_M is close to free. Below 4 bits, measure the specific model: two models of the same size at the
@@ -142,7 +143,7 @@ cache/       llm.sqlite: every model call
 - 160 items per task: an interval on a maths or MMLU drop spans ±2 to ±6 pp, so a 2–3 pp loss can't be told apart
   from none. "Free" here means "no loss this study could detect".
 - qwen3 and Gemma 3 are published only down to 4 bits, so the cliff is measured on two models, and
-  they disagree by 20 pp on where it is.
+  at 2 bits they differ by 21 pp.
 - The tasks are short: no long context, tool use or multi-turn. Extraction is near ceiling for every
   build, so it can show only that low bits don't hurt it, not how much they would hurt a harder schema.
 - The "same answer" rates and the reading of 2-bit failure modes are descriptive; only the predictions
