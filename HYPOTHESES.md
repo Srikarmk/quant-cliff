@@ -119,6 +119,11 @@ Before it, Llama's GSM8K scores from fp16 to q4_K_M were each 0.6 pp lower (fp16
 verdict changed. Re-scoring all 9,870 main replies with an independent copy of the checkers (evalpair,
 with the same fix) gives the same score on every one.
 
+A counting error in the A/A table was found on 2026-11-14, while building an interactive version of these
+results. The table compared the two answers as text, so a reply that could not be parsed in either run
+(qwen3 MMLU, mmlu-high_school_biology-264) counted as a change. The A/A repeat changed 1 of 1,280
+answers, not 2 as first reported. Prediction 12 held either way.
+
 Scored: 8 held, 5 partly, 0 failed.
 
 | # | Prediction | Result | Verdict |
@@ -134,7 +139,7 @@ Scored: 8 held, 5 partly, 0 failed.
 | 9 | Llama strict-JSON share, q2_K vs fp16, differs by ≥ 50 pp | 0% → 100% | held |
 | 10 | Gemma QAT agrees with fp16 more than q4_K_M, pooled; drop no worse on either task | 94.1% vs 93.1%; MMLU −0.6 vs −1.9; GSM8K +0.6 vs +1.9 (missed) | partly |
 | 11 | qwen3 and Gemma q4_K_M drops within ±3 pp, every task | largest Gemma MMLU −1.9 | held |
-| 12 | A/A at q4_K_M changes ≤ 3% per model and task | 2 of 1,280 answers (qwen3 MMLU) | held |
+| 12 | A/A at q4_K_M changes ≤ 3% per model and task | 1 of 1,280 answers (qwen3 MMLU) | held |
 | 13 | q4_K_M ≥ 2.5 × fp16 tokens per second, every model | 2.53×, 2.59×, 2.54×, 2.61× | held |
 
 Three of the misses are on point estimates whose intervals include the threshold: prediction 3 by

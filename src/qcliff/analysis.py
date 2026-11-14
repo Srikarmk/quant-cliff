@@ -104,7 +104,10 @@ def aa_table(df: pd.DataFrame) -> pd.DataFrame:
                 p = s.pivot(index="id", columns="variant", values="answer")
                 if "aa" not in p:
                     continue
-                changed = int((p["base"].astype(str) != p["aa"].astype(str)).sum())
+                # An answer that could not be parsed either time is not a change. Comparing as strings
+                # counted one such pair as changed, because None and NaN print differently.
+                both_missing = p["base"].isna() & p["aa"].isna()
+                changed = int(((p["base"] != p["aa"]) & ~both_missing).sum())
                 out.append({"family": fam, "level": lv, "task": task, "n": len(p), "changed": changed})
     return pd.DataFrame(out)
 

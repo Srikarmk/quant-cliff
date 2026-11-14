@@ -230,7 +230,7 @@ Walking down from fp16, the first level whose drop is at least 5 points with an 
 | qwen2.5-7b | q4_K_M | gsm8k | 160 | 0 |
 | qwen2.5-7b | q4_K_M | mmlu | 160 | 0 |
 | qwen3-8b | q4_K_M | gsm8k | 160 | 0 |
-| qwen3-8b | q4_K_M | mmlu | 160 | 2 |
+| qwen3-8b | q4_K_M | mmlu | 160 | 1 |
 | gemma3-12b | q4_K_M | gsm8k | 160 | 0 |
 | gemma3-12b | q4_K_M | mmlu | 160 | 0 |
 

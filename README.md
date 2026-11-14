@@ -46,7 +46,7 @@ JSON in a code fence, which it does on every record at every other level (0% →
 
 ![Same answer as fp16](reports/figures/agreement.png)
 
-**Answers move before accuracy does.** Sending the same prompt twice at q4_K_M changed 2 of 1,280
+**Answers move before accuracy does.** Sending the same prompt twice at q4_K_M changed 1 of 1,280
 answers, so the sampling itself is quiet. Against that, q8_0, with no accuracy cost, already gives a
 different final answer from fp16 on 2–6% of maths and multiple-choice items, and q4_K_M on 4–15%.
 At q8_0 the changes cancel out: of 40 changed answers across the four models, 14 are one wrong
