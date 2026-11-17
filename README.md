@@ -62,8 +62,8 @@ tasks there was little for QAT to recover.
 about 1.7 GB, for 9–24 pp less on maths.
 
 **What to take from it.** For 7–12B instruct models on tasks like these, 5 bits and up is free and
-q4_K_M is close to free. Below 4 bits, measure the specific model: two models of the same size at the
-same bit-width lost 7 and 27 points. And if what matters is that outputs stay the same, not just the
+q4_K_M is close to free, with one exception at q6_K (Llama on MMLU, −6.2 pp). Below 4 bits, measure the
+specific model: two models of the same size at the same bit-width lost 7 and 28 points. And if what matters is that outputs stay the same, not just the
 score, expect changes even at 8 bits.
 
 ## Design
